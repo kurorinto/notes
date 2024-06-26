@@ -33,9 +33,63 @@
  */
 
 class ListNode {
-
+  val: number
+  next: ListNode | null
+  constructor(val?: number, next?: ListNode | null) {
+    this.val = (val === undefined ? 0 : val)
+    this.next = (next === undefined ? null : next)
+  }
 }
 
 function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
-  return null
+  let res = new ListNode(0)
+  let current = res
+  let cl1 = l1
+  let cl2 = l2
+  let carry = 0
+
+  while(cl1 || cl2) {
+    const num1 = cl1?.val || 0
+    const num2 = cl2?.val || 0
+    cl1 = cl1?.next || null
+    cl2 = cl2?.next || null
+    const sum = num1 + num2 + carry
+    // current.val = sum % 10
+    carry = Math.floor(sum / 10)
+
+    current.next = new ListNode(sum % 10)
+    current = current.next
+  }
+
+  if (carry) {
+    current.next = new ListNode(carry)
+  }
+
+  return res.next
 };
+
+// 2 -> 4 -> 3
+const createListNode = (nums: number[]) => {
+  if (!nums.length) return null
+
+  const res = new ListNode(nums[0])
+  let current = res
+
+  for (let i = 1; i < nums.length; i++) {
+    current.next = new ListNode(nums[i])
+    current = current.next
+  }
+  return res
+}
+
+// [2, 4, 3]
+// [5, 6, 4]
+// [7, 0, 8]
+
+// [9,9,9,9,9,9,9]
+// [9,9,9,9]
+// [8,9,9,9,0,0,0,1]
+const l1 = createListNode([9,9,9,9,9,9,9])
+const l2 = createListNode([9,9,9,9])
+
+console.log(JSON.stringify(addTwoNumbers(l1, l2)))
