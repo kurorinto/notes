@@ -29,36 +29,35 @@
 function numIslands(grid: string[][]): number {
   const inArea = (r: number, c: number) => {
     return 0 <= r && r < grid.length && 0 <= c && c < grid[r].length;
-  }
-  
+  };
+
   const dfs = (r: number, c: number) => {
     // 是否越界
     if (!inArea(r, c)) {
-      return
+      return;
     }
-    if (grid[r][c] !== '1') {
-      return
+    if (grid[r][c] !== "1") {
+      return;
     }
     // 标记 被遍历过的格子，此处赋值非'1'的值都可以，只需不满足上述grid[r][c] !== '1'即可
-    grid[r][c] = "0"
+    grid[r][c] = "0";
     // 可先判断越界再遍历，也可以先递归再判断越界
-    dfs(r, c - 1)
-    dfs(r, c + 1)
-    dfs(r - 1, c)
-    dfs(r + 1, c)
-  }
-  
-  let res = 0
+    dfs(r, c - 1);
+    dfs(r, c + 1);
+    dfs(r - 1, c);
+    dfs(r + 1, c);
+  };
+
+  let res = 0;
   for (let r = 0; r < grid.length; r++) {
     for (let c = 0; c < grid[r].length; c++) {
-      if (grid[r][c] === '1') {
-        res++
-        dfs(r, c)
+      if (grid[r][c] === "1") {
+        res++;
+        dfs(r, c);
       }
     }
   }
-  return res
-
+  return res;
 
   // const dfs = (row: number, column: number) => {
   //   if (0 <= row && row < grid.length && 0 <= column && column < grid[row].length) return
@@ -72,7 +71,7 @@ function numIslands(grid: string[][]): number {
   //   dfs(row - 1, column)
   //   dfs(row + 1, column)
   // }
-  
+
   // let res = 0
 
   // for (let row = 0; row < grid.length; row++) {
@@ -85,11 +84,13 @@ function numIslands(grid: string[][]): number {
   // }
 
   // return res
-};
+}
 
-console.log(numIslands([
-  ["1", "1", "1", "1", "0"],
-  ["1", "1", "0", "1", "0"],
-  ["1", "1", "0", "0", "1"],
-  ["0", "0", "0", "1", "0"]
-]))
+console.log(
+  numIslands([
+    ["1", "1", "1", "1", "0"],
+    ["1", "1", "0", "1", "0"],
+    ["1", "1", "0", "0", "1"],
+    ["0", "0", "0", "1", "0"],
+  ]),
+);

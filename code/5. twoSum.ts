@@ -33,6 +33,6 @@ function twoSum(nums: number[], target: number): number[] {
     hashTable[nums[i]] = i;
   }
   return [];
-};
+}
 
-console.log(twoSum([2,7,11,15], 9))
+console.log(twoSum([2, 7, 11, 15], 9));

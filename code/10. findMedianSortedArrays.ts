@@ -22,9 +22,9 @@
 // -106 <= nums1[i], nums2[i] <= 106
 
 function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
-  const arr = nums1.concat(nums2).sort((a, b) => a - b)
-  const n = arr.length
-  return n % 2 ? arr[(n - 1) / 2] : (arr[n / 2 - 1] + arr[n / 2]) / 2
-};
+  const arr = nums1.concat(nums2).sort((a, b) => a - b);
+  const n = arr.length;
+  return n % 2 ? arr[(n - 1) / 2] : (arr[n / 2 - 1] + arr[n / 2]) / 2;
+}
 
-console.log(findMedianSortedArrays([1, 3], [2, 4]))
+console.log(findMedianSortedArrays([1, 3], [2, 4]));

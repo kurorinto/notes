@@ -23,7 +23,7 @@
 // lRUCache.get(1);    // 返回 -1 (未找到)
 // lRUCache.get(3);    // 返回 3
 // lRUCache.get(4);    // 返回 4
- 
+
 // 提示：
 // 1 <= capacity <= 3000
 // 0 <= key <= 10000
@@ -31,49 +31,48 @@
 // 最多调用 2 * 105 次 get 和 put
 
 class LRUCache {
-  private capacity = 0
+  private capacity = 0;
   // 注意map的keys方法，可以根据set的顺序获取key
-  private dataMap = new Map<number, number>()
+  private dataMap = new Map<number, number>();
 
   constructor(capacity: number) {
-    this.capacity = capacity
+    this.capacity = capacity;
   }
 
   get(key: number): number {
     if (this.dataMap.has(key)) {
-      const val = this.dataMap.get(key)!
-      this.dataMap.delete(key)
-      this.dataMap.set(key, val)
-      return val
-    } else {
-      return -1
+      const val = this.dataMap.get(key)!;
+      this.dataMap.delete(key);
+      this.dataMap.set(key, val);
+      return val;
     }
+    return -1;
   }
 
   put(key: number, value: number): void {
     if (this.dataMap.has(key)) {
-      this.dataMap.delete(key)
+      this.dataMap.delete(key);
     } else if (this.dataMap.size >= this.capacity) {
-      this.dataMap.delete(this.dataMap.keys().next().value)
+      this.dataMap.delete(this.dataMap.keys().next().value);
     }
-    this.dataMap.set(key, value)
+    this.dataMap.set(key, value);
   }
 }
 
 /**
-* Your LRUCache object will be instantiated and called as such:
-* var obj = new LRUCache(capacity)
-* var param_1 = obj.get(key)
-* obj.put(key,value)
-*/
+ * Your LRUCache object will be instantiated and called as such:
+ * var obj = new LRUCache(capacity)
+ * var param_1 = obj.get(key)
+ * obj.put(key,value)
+ */
 
-const cache = new LRUCache(2)
-cache.put(1, 1)
-cache.put(2, 2)
-console.log(cache.get(1))
-cache.put(3, 3)
-console.log(cache.get(2))
-cache.put(4, 4)
-console.log(cache.get(1))
-console.log(cache.get(3))
-console.log(cache.get(4))
+const cache = new LRUCache(2);
+cache.put(1, 1);
+cache.put(2, 2);
+console.log(cache.get(1));
+cache.put(3, 3);
+console.log(cache.get(2));
+cache.put(4, 4);
+console.log(cache.get(1));
+console.log(cache.get(3));
+console.log(cache.get(4));

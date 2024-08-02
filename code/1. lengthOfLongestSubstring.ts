@@ -3,7 +3,7 @@
 // 给定一个字符串 s ，请你找出其中不含有重复字符的 最长 子串的长度。
 // 示例 1:
 // 输入: s = "abcabcbb"
-// 输出: 3 
+// 输出: 3
 // 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
 
 // 示例 2:
@@ -35,21 +35,21 @@ function lengthOfLongestSubstring(s: string): number {
 
   // return res
 
-  let ans = 0
+  let ans = 0;
 
-  const win = new Map<string, null>()
+  const win = new Map<string, null>();
 
-  let left = 0
+  let left = 0;
   for (let i = 0; i < s.length; i++) {
     while (win.has(s[i])) {
-      win.delete(s[left])
-      left++
+      win.delete(s[left]);
+      left++;
     }
-    win.set(s[i], null)
+    win.set(s[i], null);
 
-    ans = Math.max(ans, i - left + 1)
+    ans = Math.max(ans, i - left + 1);
   }
 
-  return ans
-};
-console.log(lengthOfLongestSubstring("abcabcbb"))
+  return ans;
+}
+console.log(lengthOfLongestSubstring("abcabcbb"));

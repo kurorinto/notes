@@ -8,7 +8,7 @@ const sum = (...args1: number[]) => {
   };
 
   return add;
-}
+};
 
 console.log(sum(1, 2).sumOf()); // 返回 3
 console.log(sum(1, 2)(3).sumOf()); // 返回 6
