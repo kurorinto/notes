@@ -13,8 +13,5 @@
     "rules": {
       "recommended": false
     }
-  },
-  "files": {
-    "include": ["./src/**/*.ts"]
   }
 }
