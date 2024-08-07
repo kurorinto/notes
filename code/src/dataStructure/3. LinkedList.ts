@@ -116,7 +116,13 @@ class MyLinkedList<T = any> {
 
 // console.log(JSON.stringify(numberList));
 
-type Monomial = [number, number];
+/** [系数, 指数] */
+type Monomial = [
+  /** 系数 */
+  number,
+  /** 指数 */
+  number,
+];
 
 // 多项式表示
 class UnivariatePolynomial {
